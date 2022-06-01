@@ -4,10 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "prisma": {
-    "seed": "node prisma/seed.ts"
+    "seed": "node dist/prisma/seed.js"
   },
   "scripts": {
     "dev": "tsnd --transpile-only --ignore-watch node_modules src/server.ts",
+    "seed-dev": "tsnd prisma/seed.ts",
     "build": "tsc",
     "start": "node dist/src/server.js"
   },
