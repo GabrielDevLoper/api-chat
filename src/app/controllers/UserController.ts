@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { User } from "../models/User";
 import { Role } from "../models/Role";
+import UserService from "../services/UserService";
 
 class UserController {
     async store(req: Request, res: Response){
@@ -40,13 +41,9 @@ class UserController {
     }
     
     async index(req: Request, res: Response){
-        try {
-            const users = await User.findMany();
+        const users = await UserService.index();
 
-            return res.json(users);
-        } catch (error) {
-            console.log(error);
-        }
+        return res.json(users);
         
     }
 }
