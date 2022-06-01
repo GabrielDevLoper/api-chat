@@ -2,11 +2,9 @@ import { Router } from "express";
 
 const messageRoutes = Router();
 
-messageRoutes.get("/room/:id_room", (req, res) => {
-    const { id_room }  = req.params;
-    
-    return res.json({message: "Message routes"});;
-});
+import MessageUserController from "../app/controllers/MessageUserRoomController"
 
+messageRoutes.get("/room/:id_room", MessageUserController.index);
+messageRoutes.post("/room/send", MessageUserController.store);
 
 export { messageRoutes };

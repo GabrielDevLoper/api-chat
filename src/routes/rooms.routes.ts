@@ -2,8 +2,11 @@ import { Router } from "express";
 
 const roomsRoutes = Router();
 
-roomsRoutes.get("/roomsList", (req, res) => {
-    return res.json({message: "lista de salas"});;
-});
+import RoomController from "../app/controllers/RoomController";
+
+roomsRoutes.get("/list", RoomController.index);
+roomsRoutes.post("/save", RoomController.store);
+roomsRoutes.get("/getMessages/:id_room", RoomController.getMessages);
+
 
 export { roomsRoutes };
