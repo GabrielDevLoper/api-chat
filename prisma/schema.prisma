@@ -64,8 +64,7 @@ model MessagesUserRoom {
 }
 
 model UsersRoom {
-  id Int @id @default(autoincrement())
-
+  id        Int      @id @default(autoincrement())
   id_user   Int
   user      User     @relation(fields: [id_user], references: [id])
   id_room   Int
