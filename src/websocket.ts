@@ -1,8 +1,11 @@
 import { io } from "./app";
 
 import { MessageUserRoom } from "./app/models/MessageUserRoom";
-import { UsersRoom } from "./app/models/UserRoom";
-
+import { UsersRoom } from "./app/models/UsersRoom";
+interface UserRoom {
+  id_room: number;
+  id_user: number;
+}
 //emit => emitir alguma informação
 //on => escutando alguma informação
 io.on("connection", async (socket) => {
@@ -16,7 +19,7 @@ io.on("connection", async (socket) => {
     socket.join(id_room);
 
     const userInRoom = users.find(
-      (user) =>
+      (user: UserRoom) =>
         user.id_user === Number(id_user) && user.id_room === Number(id_room)
     );
 
