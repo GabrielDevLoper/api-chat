@@ -27,6 +27,7 @@ model Room {
   updated_at DateTime @updatedAt
 
   MessagesUserRoom MessagesUserRoom[]
+  UsersRoom        UsersRoom[]
   @@map("rooms")
 }
 
@@ -44,6 +45,7 @@ model User {
   updated_at     DateTime @updatedAt
 
   MessagesUserRoom MessagesUserRoom[]
+  UsersRoom        UsersRoom[]
   @@map("users")
 }
 
@@ -59,4 +61,17 @@ model MessagesUserRoom {
   updated_at DateTime @updatedAt
 
   @@map("messages_user_room")
+}
+
+model UsersRoom {
+  id Int @id @default(autoincrement())
+
+  id_user   Int
+  user      User     @relation(fields: [id_user], references: [id])
+  id_room   Int
+  room      Room     @relation(fields: [id_room], references: [id])
+  status    Boolean? @default(true)
+  socket_id String?
+
+  @@map("users_room")
 }
