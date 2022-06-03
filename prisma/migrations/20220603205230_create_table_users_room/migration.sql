@@ -4,6 +4,7 @@ CREATE TABLE "users_room" (
     "id_user" INTEGER NOT NULL,
     "id_room" INTEGER NOT NULL,
     "status" BOOLEAN DEFAULT true,
+    "socket_id" TEXT,
 
     CONSTRAINT "users_room_pkey" PRIMARY KEY ("id")
 );

@@ -27,8 +27,8 @@ model Room {
   updated_at DateTime @updatedAt
 
   MessagesUserRoom MessagesUserRoom[]
-  UsersRoom        UsersRoom[]
   @@map("rooms")
+  UsersRoom UsersRoom[]
 }
 
 model User {
@@ -45,8 +45,8 @@ model User {
   updated_at     DateTime @updatedAt
 
   MessagesUserRoom MessagesUserRoom[]
-  UsersRoom        UsersRoom[]
   @@map("users")
+  UsersRoom UsersRoom[]
 }
 
 model MessagesUserRoom {

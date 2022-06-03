@@ -1,5 +1,5 @@
-import { prismaClient } from "../../database/prismaClient";
+// import { prismaClient } from "../../database/prismaClient";
 
-const UsersRoom = prismaClient.usersRoom;
+// const UsersRoom = prismaClient.usersRoom;
 
-export { UsersRoom };
+// export { UsersRoom };
