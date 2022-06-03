@@ -7,7 +7,7 @@
     "seed": "node dist/prisma/seed.js"
   },
   "scripts": {
-    "dev": "tsnd --exit-child --transpile-only --ignore-watch node_modules src/server.ts",
+    "dev": "tsnd --transpile-only --ignore-watch node_modules src/server.ts",
     "seed-dev": "tsnd prisma/seed.ts",
     "build": "tsc",
     "start": "node dist/src/server.js"

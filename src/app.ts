@@ -1,13 +1,8 @@
 import express from "express";
 import http from "http";
-import { Server } from "socket.io";
 import cors from "cors";
-
-import { usersRoutes } from "./routes/users.routes";
-import { roomsRoutes } from "./routes/rooms.routes";
-import { messageRoutes } from "./routes/messages.routes";
-import { rolesRoutes } from "./routes/roles.routes";
-import { authenticate } from "./routes/authenticate.routes";
+import { Server } from "socket.io";
+import { routes } from "./routes";
 
 const app = express();
 
@@ -19,14 +14,7 @@ const io = new Server(serverHttp);
 
 app.use(express.json());
 app.use(cors());
-
-app.use("/authenticate", authenticate);
-app.use("/user", usersRoutes);
-app.use("/room", roomsRoutes);
-app.use("/message", messageRoutes);
-app.use("/role", rolesRoutes);
-
-
+app.use(routes);
 
 
 export { serverHttp, io };
