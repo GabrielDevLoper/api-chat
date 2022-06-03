@@ -1,23 +1,27 @@
-import { Request, Response, NextFunction } from "express"
-import 'dotenv/config';
-import jwt from 'jsonwebtoken';
+import { Request, Response, NextFunction } from "express";
+import "dotenv/config";
+import jwt from "jsonwebtoken";
 
 interface TokenPayload {
-    id: number;
-    iat:  number;
-    exp:  number;
-
+  id: number;
+  iat: number;
+  exp: number;
 }
 
-export default function authMiddleware (req: Request, res: Response, next: NextFunction) {
+export default function authMiddleware(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   const authHeader = req.headers.authorization;
 
-  if (!authHeader) return res.status(401).json({message: 'Token not provided'});
+  if (!authHeader)
+    return res.status(401).json({ message: "Token not provided" });
 
-  const [, token] = authHeader.split(' ');
+  const [, token] = authHeader.split(" ");
 
   try {
-    const payload = jwt.verify(token, 'secret');
+    const payload = jwt.verify(token, "secret");
 
     const { id } = payload as TokenPayload;
 
@@ -25,6 +29,6 @@ export default function authMiddleware (req: Request, res: Response, next: NextF
 
     return next();
   } catch (err) {
-    return res.status(401).json({message: 'Invalid token'});
+    return res.status(401).json({ message: "Invalid token" });
   }
-};
+}

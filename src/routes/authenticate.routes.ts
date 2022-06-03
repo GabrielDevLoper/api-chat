@@ -9,6 +9,3 @@ authenticateRoutes.post("/create-account", authController.store);
 authenticateRoutes.get("/user-logged", authController.userLogged);
 
 export { authenticateRoutes };
-
-
-
