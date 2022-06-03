@@ -1,13 +1,13 @@
 import { io } from "./app";
-import { prismaClient } from "../src/database/prismaClient";
+
 import { MessageUserRoom } from "./app/models/MessageUserRoom";
-// import { UserRoom } from "./app/models/UserRoom";
+import { UsersRoom } from "./app/models/UserRoom";
 
 //emit => emitir alguma informação
 //on => escutando alguma informação
 io.on("connection", async (socket) => {
   //usuarios em sala
-  const users = await prismaClient.usersRoom.findMany();
+  const users = await UsersRoom.findMany();
 
   socket.on("select_room", async (response, callback) => {
     const { id_room, id_user } = response;
@@ -21,7 +21,7 @@ io.on("connection", async (socket) => {
     );
 
     if (userInRoom) {
-      await prismaClient.usersRoom.update({
+      await UsersRoom.update({
         where: { id: userInRoom.id },
         data: {
           socket_id: socket.id,
@@ -29,7 +29,7 @@ io.on("connection", async (socket) => {
       });
     } else {
       // Math.floor(Math.random() * 16777215).toString(16),
-      await prismaClient.usersRoom.create({
+      await UsersRoom.create({
         data: {
           id_room,
           id_user,
