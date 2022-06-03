@@ -7,6 +7,7 @@ import { usersRoutes } from "./routes/users.routes";
 import { roomsRoutes } from "./routes/rooms.routes";
 import { messageRoutes } from "./routes/messages.routes";
 import { rolesRoutes } from "./routes/roles.routes";
+import { authenticate } from "./routes/authenticate.routes";
 
 const app = express();
 
@@ -19,10 +20,12 @@ const io = new Server(serverHttp);
 app.use(express.json());
 app.use(cors());
 
+app.use("/authenticate", authenticate);
 app.use("/user", usersRoutes);
 app.use("/room", roomsRoutes);
 app.use("/message", messageRoutes);
 app.use("/role", rolesRoutes);
+
 
 
 

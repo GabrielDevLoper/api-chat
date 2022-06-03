@@ -1,5 +1,6 @@
 import { User } from "../models/User";
 import { Role } from "../models/Role";
+import bcrypt from "bcryptjs";
 
 
 interface User {
@@ -44,13 +45,13 @@ class UserService {
                 data: {
                     username,
                     email,
-                    password,
+                    password: bcrypt.hashSync(password, 8),
                     id_role,
                     username_color: username_color ? username_color : null
                 }
             });
 
-            return { message: "Usuário(a) cadastrado com sucesso" };
+            return user;
         } catch (error) {
             console.log(error);
         }
