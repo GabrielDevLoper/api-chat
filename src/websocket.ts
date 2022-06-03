@@ -54,7 +54,7 @@ io.on("connection", async (socket) => {
         message: text,
       },
     });
-    //Enviar para usuarios da sala
+    //Enviar mensagens para usuarios da sala
     io.to(id_room).emit("message", message);
   });
 });
