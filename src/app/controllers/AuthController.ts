@@ -57,6 +57,9 @@ class AuthController {
       where: {
         id: req.userId,
       },
+      include: {
+        role: true,
+      },
     });
 
     // @ts-expect-error Aqui vai ocorrer um erro, mas estou ignorando
@@ -71,6 +74,9 @@ class AuthController {
     const user = await User.findUnique({
       where: {
         email,
+      },
+      include: {
+        role: true,
       },
     });
 

@@ -3,6 +3,7 @@ import { roomsRoutes } from "./routes/rooms.routes";
 import { messageRoutes } from "./routes/messages.routes";
 import { rolesRoutes } from "./routes/roles.routes";
 import { authenticateRoutes } from "./routes/authenticate.routes";
+import { userRoomRoutes } from "./routes/userRoom.routes";
 
 import authMiddleware from "./middlewares/auth";
 
@@ -17,5 +18,6 @@ routes.use("/user", usersRoutes);
 routes.use("/room", roomsRoutes);
 routes.use("/message", messageRoutes);
 routes.use("/role", rolesRoutes);
+routes.use("/users-in-room", userRoomRoutes);
 
 export { routes };

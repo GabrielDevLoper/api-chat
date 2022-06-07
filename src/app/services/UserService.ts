@@ -24,6 +24,7 @@ class UserService {
   async store({ username, email, password, id_role, username_color }: User) {
     const userAlreadyExists = await User.findUnique({
       where: { email },
+      include: { role: true },
     });
 
     if (userAlreadyExists) {
