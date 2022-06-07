@@ -10,7 +10,12 @@ const app = express();
 const serverHttp = http.createServer(app);
 
 //Servidor para utilizar o socket
-const io = new Server(serverHttp);
+const io = new Server(serverHttp, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+  },
+});
 
 app.use(express.json());
 app.use(cors());
